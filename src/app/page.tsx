@@ -6,63 +6,31 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { newsItems } from '../data/newsItems';
 import { projects } from '../data/projects';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function HomePage() {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  // 使用 useEffect 來處理初始化
-  useEffect(() => {
-    // 檢查本地存儲中的深色模式設置
-    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
-    setIsDarkMode(savedDarkMode);
-    setMounted(true);
-  }, []);
+  const [selectedTag] = useState<string | null>(null);
+  const [isDarkMode] = useState(false);
 
   useEffect(() => {
-    if (mounted) {
-      // 保存深色模式設置到本地存儲
-      localStorage.setItem('darkMode', isDarkMode.toString());
-      // 更新 HTML 標籤的 class
-      if (isDarkMode) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+    // 根據 isDarkMode 狀態更新 html 標籤的 class
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
     }
-  }, [isDarkMode, mounted]);
+  }, [isDarkMode]);
 
-  // 將新聞排序邏輯移到組件外部，確保服務器端和客戶端產生相同的結果
-  const sortedNewsItems = useMemo(() => {
-    return [...newsItems].sort((a, b) => 
-      new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
-  }, []);
+  const filteredProjects = selectedTag
+    ? projects.filter(project => project.tags.includes(selectedTag))
+    : projects;
 
-  const filteredProjects = useMemo(() => {
-    return selectedTag
-      ? projects.filter(project => project.tags.includes(selectedTag))
-      : projects;
-  }, [selectedTag]);
-
-  // 避免服務器端渲染和客戶端渲染不匹配
-  if (!mounted) {
-    return null;
-  }
+  // 將新聞按照日期排序
+  const sortedNewsItems = newsItems.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
       <main className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* 深色模式切換按鈕 */}
-        <button
-          onClick={() => setIsDarkMode(!isDarkMode)}
-          className="fixed top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-          aria-label="切換深色模式"
-        >
-          {isDarkMode ? '🌞' : '🌙'}
-        </button>
 
         {/* 首頁區塊 */}
         <section id="home" className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
@@ -293,7 +261,6 @@ export default function HomePage() {
             {/* 標籤篩選按鈕 */}
             <div className="flex flex-wrap gap-2 mb-6">
               <button
-                onClick={() => setSelectedTag(null)}
                 className={`px-3 py-1 rounded-full ${
                   selectedTag === null
                     ? 'bg-blue-500 text-white'
@@ -305,7 +272,6 @@ export default function HomePage() {
               {Array.from(new Set(projects.flatMap(p => p.tags))).map(tag => (
                 <button
                   key={tag}
-                  onClick={() => setSelectedTag(tag)}
                   className={`px-3 py-1 rounded-full ${
                     selectedTag === tag
                       ? 'bg-blue-500 text-white'
@@ -370,62 +336,63 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* 新聞列表 */}
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {sortedNewsItems.map((news) => (
-                <article 
-                  key={news.id} 
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col"
-                >
-                  <div className="relative h-48">
-                    <Image
-                      src={news.image}
-                      alt={news.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm text-indigo-600 dark:text-indigo-400">{news.category}</span>
-                      <time 
-                        dateTime={news.date}
-                        className="text-sm text-gray-500 dark:text-gray-400"
-                      >
-                        {news.date}
-                      </time>
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{news.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">{news.description}</p>
-                    
-                    {news.keywords && (
-                      <div className="mb-4 flex flex-wrap gap-2">
-                        {news.keywords.map((keyword, index) => (
-                          <span 
-                            key={index}
-                            className="inline-block bg-gray-100 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 dark:text-gray-300"
-                          >
-                            #{keyword}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    
-                    <div className="mt-auto flex justify-between items-center">
-                      <span className="text-sm text-gray-500 dark:text-gray-400">來源：{news.source}</span>
-                      <a
-                        href={news.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-400 dark:hover:bg-indigo-500"
-                      >
-                        閱讀更多
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              ))}
+            {/* 分類標籤 */}
+            <div className="flex space-x-4 mb-8 flex-wrap gap-y-2">
+              <button className="px-4 py-2 rounded-full bg-indigo-600 text-white">全部</button>
+              <button className="px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600">體育</button>
             </div>
+
+            {/* 新聞列表 - 橫向滾動 */}
+            <div className="overflow-x-auto whitespace-nowrap">
+              <div className="inline-flex space-x-8">
+                {sortedNewsItems.map((news) => (
+                  <article key={news.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden inline-block w-80">
+                    <div className="relative h-48">
+                      <Image
+                        src={news.image}
+                        alt={news.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-sm text-indigo-600 dark:text-indigo-400">{news.category}</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{news.date}</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{news.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-300 mb-4">{news.description}</p>
+                      
+                      {news.keywords && (
+                        <div className="mb-4 flex flex-wrap gap-2">
+                          {news.keywords.map((keyword, index) => (
+                            <span 
+                              key={index}
+                              className="inline-block bg-gray-100 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-600 dark:text-gray-300"
+                            >
+                              #{keyword}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-500 dark:text-gray-400">來源：{news.source}</span>
+                        <a
+                          href={news.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-400 dark:hover:bg-indigo-500"
+                        >
+                          閱讀更多
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+
           </div>
         </section>
 
