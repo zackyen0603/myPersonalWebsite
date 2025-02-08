@@ -61,6 +61,9 @@ export default function HomePage() {
                     <a href="https://github.com/zackyen0603" target="_blank" rel="noopener noreferrer" className="ml-4 text-gray-400 hover:text-gray-200">
                       <Image src="/github-mark/github-mark-white.svg" alt="GitHub" width={24} height={24} />
                     </a>
+                    <a href="https://www.linkedin.com/in/wei-hsin-yen-734043350/" target="_blank" rel="noopener noreferrer" className="ml-4 text-gray-400 hover:text-gray-200">
+                      <Image src="/LinkedIn-Logos/LI-In-Bug.png" alt="LinkedIn" width={26} height={26} />
+                    </a>
                   </p>
                 </div>
               </div>
