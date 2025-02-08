@@ -48,15 +48,15 @@
       id: 4,
       title: '個人網站',
       description: '這是一個使用 Next.js 開發的個人網站，展示了我的個人經歷以及相關介紹，將網站資料放置於Github中，並且透過 Vercel 部署，使用 Vercel 的 Edge Functions 提供即時的資訊更新。',
-      url: 'https://example.com',
+      url: 'https://my-personal-website-zack.vercel.app/',
       tags: ['HTML', 'CSS', 'JavaScript', 'React', 'Next.js'],
       startDate: '2024-07-31',
       endDate: 'current',
       bulletPoints: [
         '展示個人經歷與介紹',
         '使用 Next.js 開發',
-        '儲存於 Github 中',
-        '透過 Vercel 部署'
+        '利用 git 指令將網站資料儲存於 Github',
+        '透過 Vercel 部署上線'
       ]
     }
   ];

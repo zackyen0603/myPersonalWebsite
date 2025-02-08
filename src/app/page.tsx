@@ -408,10 +408,10 @@ export default function HomePage() {
                 <span className="text-gray-600 dark:text-gray-300 font-medium">Email:</span>
                 <a href="mailto:zack09955189@gmail.com" className="ml-2 text-blue-500 dark:text-blue-400 hover:underline">zack09955189@gmail.com</a>
               </div>
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <span className="text-gray-600 dark:text-gray-300 font-medium">LinkedIn:</span>
                 <a href="https://www.linkedin.com/in/wei-hsin-yen" target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 dark:text-blue-400 hover:underline">linkedin.com/in/wei-hsin-yen</a>
-              </div>
+              </div> */}
               <div className="flex items-center">
                 <span className="text-gray-600 dark:text-gray-300 font-medium">GitHub:</span>
                 <a href="https://github.com/zackyen0603" target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 dark:text-blue-400 hover:underline">github.com/zackyen0603</a>
