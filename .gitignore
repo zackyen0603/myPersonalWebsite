@@ -39,3 +39,43 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# MacOS / Linux 可能產生的系統檔案
+.DS_Store
+Thumbs.db
+
+# 環境變數（確保敏感資訊不外洩）
+.env.local
+.env.development
+.env.production
+
+# log 檔案
+logs
+*.log
+
+# Node.js 相關
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+.vscode/
+
+# 避免上傳 Docker 產生的檔案
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.db
+.env
+.env.local
+.env.production
+.env.development
+.dockerignore
+docker-compose.override.yml
+
+# 避免上傳 Docker 內部產物
+backend/.venv/
+backend/.pytest_cache/
+backend/.mypy_cache/
+frontend/.next/
+frontend/node_modules/
+frontend/.vercel/
