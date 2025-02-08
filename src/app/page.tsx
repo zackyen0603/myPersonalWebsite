@@ -78,7 +78,7 @@ export default function HomePage() {
                     聯絡我
                   </a>
                   <a 
-                    href="/resume.pdf"
+                    href="/Wei_Hsin_Yen_CV.pdf"
                     download
                     className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-full shadow-sm text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all text-center"
                   >
@@ -147,8 +147,8 @@ export default function HomePage() {
 
                     <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">興趣愛好</h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      除了程式開發外，我也熱愛運動，特別是棒球。在大學時期曾經是校隊的投手，
-                      這些經歷培養了我的團隊合作精神和抗壓能力。
+                      除了程式開發外，我也熱愛運動，特別是棒球，在學生時期曾經是校隊的投手與打者，
+                      這些經歷培養了我的團隊合作精神與領導力，在投手丘面對困境的情境也很好地訓練了我的抗壓能力。
                     </p>
                   </div>
                 </div>
