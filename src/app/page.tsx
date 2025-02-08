@@ -41,7 +41,7 @@ export default function HomePage() {
               <div className="w-full max-w-xs mx-auto">
                 <div className="aspect-square overflow-hidden rounded-full border-4 border-gray-200 dark:border-gray-700">
                   <Image
-                    src="/images/photo.jpeg"
+                    src="/images/photo2.jpeg"
                     alt="個人照片"
                     width={400}
                     height={400}
@@ -411,10 +411,10 @@ export default function HomePage() {
                 <span className="text-gray-600 dark:text-gray-300 font-medium">Email:</span>
                 <a href="mailto:zack09955189@gmail.com" className="ml-2 text-blue-500 dark:text-blue-400 hover:underline">zack09955189@gmail.com</a>
               </div>
-              {/* <div className="flex items-center">
+              <div className="flex items-center">
                 <span className="text-gray-600 dark:text-gray-300 font-medium">LinkedIn:</span>
-                <a href="https://www.linkedin.com/in/wei-hsin-yen" target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 dark:text-blue-400 hover:underline">linkedin.com/in/wei-hsin-yen</a>
-              </div> */}
+                <a href="https://www.linkedin.com/in/wei-hsin-yen-734043350/" target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 dark:text-blue-400 hover:underline">linkedin.com/in/wei-hsin-yen</a>
+              </div>
               <div className="flex items-center">
                 <span className="text-gray-600 dark:text-gray-300 font-medium">GitHub:</span>
                 <a href="https://github.com/zackyen0603" target="_blank" rel="noopener noreferrer" className="ml-2 text-blue-500 dark:text-blue-400 hover:underline">github.com/zackyen0603</a>
