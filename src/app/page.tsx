@@ -361,7 +361,13 @@ export default function HomePage() {
                     </div>
                     <div className="p-6">
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm text-indigo-600 dark:text-indigo-400">{news.category}</span>
+                        <div className="flex flex-wrap gap-1">
+                          {news.category.map((cat, index) => (
+                            <span key={index} className="text-sm text-indigo-600 dark:text-indigo-400">
+                              {index > 0 ? `・${cat}` : cat}
+                            </span>
+                          ))}
+                        </div>
                         <span className="text-sm text-gray-500 dark:text-gray-400">{news.date}</span>
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">{news.title}</h3>
