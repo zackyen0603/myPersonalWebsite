@@ -70,7 +70,7 @@ export default function NewsPage() {
         <div className="flex flex-col md:flex-row items-start gap-8">
           {/* 左側：照片和姓名 */}
           <div className="w-full md:w-1/3">
-            <div className="w-300 h-400  overflow-hidden rounded-lg border-4 border-gray-200 dark:border-gray-700 mb-4">
+            <div className="w-300 h-400 overflow-hidden rounded-lg border-0 border-gray-200 dark:border-gray-900 mb-4">
               <Image
                 src="/images/player1.jpeg"
                 alt="球員相片"
@@ -86,11 +86,11 @@ export default function NewsPage() {
             <div className="col-span-2 mb-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">#78 顏維新</h2>
-                  <p className="text-xl text-gray-600 dark:text-gray-400">Wei-Hsin Yen</p>
+                  <h2 className="text-4xl font-bold text-gray-100 dark:text-gray-100 mb-2">#78 顏維新</h2>
+                  <p className="text-xl text-gray-700 dark:text-gray-400">Wei-Hsin Yen</p>
                 </div>
 
-                <div className="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 rounded-full">
+                <div className="inline-flex items-center px-4 py-2 opacity-90 bg-gray-100 dark:bg-gray-800 rounded-lg">
                   <span className="text-gray-900 dark:text-gray-100 text-xl">Taiwan | Age: 26</span>
                 </div>
               </div>
@@ -109,13 +109,13 @@ export default function NewsPage() {
     </div>
   );
 
-  // 新增 InfoItem 元件
-  const InfoItem = ({ label, value }: { label: string; value: string }) => (
-    <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
-      <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{label}</p>
-      <p className="text-gray-900 dark:text-gray-100 text-lg font-semibold">{value}</p>
-    </div>
-  );
+    // 新增 InfoItem 元件
+    const InfoItem = ({ label, value }: { label: string; value: string }) => (
+        <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-4 opacity-80"> {/* 背景透明 */}
+          <p className="text-gray-500 dark:text-gray-400 text-sm mb-1">{label}</p>
+          <p className="text-gray-900 dark:text-gray-100 text-lg font-semibold">{value}</p> {/* 字體不透明 */}
+        </div>
+      );
 
   // 經歷區塊
   const Experience = () => {
