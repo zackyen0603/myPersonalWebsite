@@ -1,16 +1,45 @@
+'use client';
 import Image from 'next/image';
 import { newsItems } from '../../data/newsItems';
+import { useState } from 'react';
 
 export default function NewsPage() {
+  const [sortBy, setSortBy] = useState('date');
+  
+  const sortedNews = [...newsItems].sort((a, b) => {
+    switch (sortBy) {
+      case 'date':
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      case 'title':
+        return a.title.localeCompare(b.title);
+      case 'category':
+        return a.category.localeCompare(b.category);
+      default:
+        return 0;
+    }
+  });
+
   return (
     <div className="p-8">
-      <div className="flex items-baseline gap-3 mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">新聞列表</h2>
-        <span className="text-lg text-gray-500 dark:text-gray-400">News</span>
+      <div className="flex justify-between items-baseline mb-8">
+        <div className="flex items-baseline gap-3">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">新聞列表</h2>
+          <span className="text-lg text-gray-500 dark:text-gray-400">News</span>
+        </div>
+        
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="px-4 py-2 border rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
+        >
+          <option value="date">依日期排序</option>
+          <option value="title">依標題排序</option>
+          <option value="category">依分類排序</option>
+        </select>
       </div>
 
       <div className="space-y-8">
-        {newsItems.map((news) => (
+        {sortedNews.map((news) => (
           <article key={news.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden flex flex-col md:flex-row">
             <div className="relative w-full md:w-1/3 h-48 md:h-auto">
               <Image
