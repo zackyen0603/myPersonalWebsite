@@ -327,13 +327,13 @@ export default function HomePage() {
         </section>
         
         {/* 新聞區塊 */}
-        <section id="news" className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+        <section id="baseball" className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-gray-200 dark:border-gray-700">
           <div className="p-8">
             <div className="flex items-baseline gap-3 mb-8">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100">棒球相關</h2>
               <span className="text-lg text-gray-500 dark:text-gray-400">Baseball</span>
               <Link 
-                href="/news" 
+                href="/baseball" 
                 className="ml-auto px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 transition-all text-sm"
               >
                 查看更多

@@ -47,7 +47,7 @@ export default function RootLayout({
               </li>
               <li>
                 <Link 
-                  href="/#news" 
+                  href="/#baseball" 
                   className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
                 >
                   棒球
