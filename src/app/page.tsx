@@ -262,7 +262,7 @@ export default function HomePage() {
             </div>
 
             {/* 標籤篩選按鈕 */}
-            <div className="flex flex-wrap gap-2 mb-6">
+            {/* <div className="flex flex-wrap gap-2 mb-6">
               <button
                 className={`px-3 py-1 rounded-full ${
                   selectedTag === null
@@ -284,7 +284,7 @@ export default function HomePage() {
                   {tag}
                 </button>
               ))}
-            </div>
+            </div> */}
 
             {/* 專案列表 */}
             <div className="grid md:grid-cols-2 gap-8">
@@ -340,10 +340,10 @@ export default function HomePage() {
             </div>
 
             {/* 分類標籤 */}
-            <div className="flex space-x-4 mb-8 flex-wrap gap-y-2">
+            {/* <div className="flex space-x-4 mb-8 flex-wrap gap-y-2">
               <button className="px-4 py-2 rounded-full bg-indigo-600 text-white">全部</button>
               <button className="px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600">體育</button>
-            </div>
+            </div> */}
 
             {/* 新聞列表 - 橫向滾動 */}
             <div className="overflow-x-auto whitespace-nowrap">

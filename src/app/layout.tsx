@@ -50,17 +50,17 @@ export default function RootLayout({
                   href="/#news" 
                   className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
                 >
-                  棒球相關
+                  棒球
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link 
                   href="/#contact" 
                   className="text-gray-300 hover:text-white transition-colors duration-200 font-medium"
                 >
                   聯絡方式
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </header>
