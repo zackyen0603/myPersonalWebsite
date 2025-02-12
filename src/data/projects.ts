@@ -20,9 +20,9 @@
       title: 'JudgeCoder',
       description: 'JudgeCoder 是一個基於大型語言模型（LLM）的自動化程式碼生成與驗證系統。透過自動化測試與 Chain-of-Thought 回饋機制，系統能夠根據測試結果反饋給 LLM 進行程式碼修正，有效提升了 GPT-3.5-turbo 模型在 HumanEval 測試集上的生成正確率。',
       url: 'https://github.com/zackyen0603/JudgeCoder',
-      tags: ['LLM', 'AI', 'Automation Testing', 'Chain-of-Thought', 'HumanEval', 'Code Generation'],
+      tags: ['LLM', 'Automation Testing', 'Chain-of-Thought', 'Code Generation', 'Python', 'C++', 'Shell Script'],
       startDate: '2024-01-01',
-      endDate: '2023-06-30',
+      endDate: '2024-06-30',
       bulletPoints: [
         '自動化程式碼生成與測試：利用 LLM 依需求生成程式碼，並自動產生相應單元測試。執行測試後自動收集並分析錯誤結果。',
         '程式碼迭代機制：利用 Chain-of-Thought 將測試結果回饋給 LLM 逐步改善程式碼。',
