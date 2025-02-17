@@ -85,7 +85,14 @@ export default function HomePage() {
                     download
                     className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-full shadow-sm text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all text-center"
                   >
-                    英文履歷
+                    履歷
+                  </a>
+                  <a 
+                    href="/WeiHsinYen_Intro.pptx"
+                    download
+                    className="inline-flex items-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-full shadow-sm text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all text-center"
+                  >
+                    簡報
                   </a>
                 </div>
               </div>
